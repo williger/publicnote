@@ -1,34 +1,35 @@
 <template>
   <div id="app">
-    <input type="text" v-model="title" placeholder="title" v-on:keyup="get()" autocapitalize="none"/>
+    <input type="text" v-model="sot.title" placeholder="title" v-on:keyup="get()" autocapitalize="none"/>
     <status id="status"/>
-    <home id="home" v-if="title == ''"/>
-    <textarea v-else v-model="sot.note" v-on:keyup="save()" v-bind:class="{blur: sot.loading}" :disabled="sot.loading == true"/>
+    <home id="home" v-if="sot.title == ''"/>
+    <terms id="terms" v-else-if="sot.title == 'terms'"/>
+    <textarea placeholder="type note here" v-else v-model="sot.note" v-on:keyup="save()" v-bind:class="{blur: sot.loading}" :disabled="sot.loading == true"/>
   </div>
 </template>
 
 <script>
+
 import home   from './components/home.vue'
+import terms  from './components/terms.vue'
 import status from './components/status.vue'
 
 export default {
   name: 'app',
   components: {
-    home, status
+    home, terms, status,
   },
   data: function() {
     return {
       sot: this.$root.$data,
-      title: '',
-      autoload: null
     }
   },
   methods: {
     get: function() {
       clearTimeout(this.sot.autoload);
       clearTimeout(this.sot.autosave);
-      if (this.title != '') {
-        this.sot.get(this.title);
+      if (this.sot.title != '' && this.sot.title != 'terms') {
+        this.sot.get(this.sot.title);
       }
       else {
         this.sot.note = '';
@@ -36,7 +37,7 @@ export default {
       }
     },
     save: function() {
-      this.sot.save(this.title, this.sot.note);
+      this.sot.save(this.sot.title, this.sot.note);
     }
   }
 }
@@ -62,7 +63,7 @@ html, body {
   justify-content: space-between;
 }
 
-#home {
+#home, #terms {
   flex-grow: 1;
   margin: $app-margin;
   overflow-y: scroll;
@@ -119,6 +120,13 @@ textarea {
   line-height: 20px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+}
+
+.link {
+  text-decoration: underline;
+  display: inline-block;
+  cursor: pointer;
+  color: $color-primary;
 }
 
 </style>

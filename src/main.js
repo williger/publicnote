@@ -8,6 +8,7 @@ var controller = null;
 var signal = null;
 
 var publicnote = {
+  title: '',
   note: '',
   status: '',
   autosave: null,
