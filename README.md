@@ -8,7 +8,7 @@ Every note is encrypted with AES256, using the title as the encryption key.  A S
 Notes stored on publicnote can be public or private, depending on the complexity of the title. Simple titles lead to highly visible notes that can be edited by the public, and complex titles lead to private notes that are securely encrypted. The more complex the title is, the stronger the encryption is.
 
             title → SHA256 → index
-             ⇣
+              ⇣
              🔑
     note → AES256 → encrypted note
 
