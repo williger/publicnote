@@ -27,5 +27,6 @@ Using common words like "hello" as your title is for entertainment purposes only
 Publicnote is open source and offered as a free service, running thanks to your cryptocurrency donations.
 
 daniel@ncrypt.org
+
 BTC: 1HrQfojcRt4gGEZntEwp24KVrSch8mtqMk  
 LTC: Lc5Mw23SWYJjX3Fx4Nw7J5PG4eyyG3Pow2  
